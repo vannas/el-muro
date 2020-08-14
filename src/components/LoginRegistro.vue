@@ -49,7 +49,11 @@
             
             <label for="register_confirm" min="8" class="grey-text validate">Confirm your password:</label>
             <input type="password" id="register_confirm" class="validate" required v-model="register_confirm"/>
+            <br/>
             
+            <label for="register_pic" class="grey-text text-small">Upload Profile Picture:</label>
+            <p><input type="file" id="register_pic" class="validate" required/></p>
+
             <p><button class="btn waves-effect waves-light nice red" type="submit" name="action">Register <i class="material-icons prefix">near_me</i></button></p>
             
         </form>
@@ -59,8 +63,6 @@
 </template>
 
 <script>
-
-
 
 export default {
     name: 'LoginRegistro',
@@ -101,7 +103,6 @@ export default {
                 confirm.setCustomValidity('Check your spelling, your passwords don´t match');
                 return
             }
-            
             //ingresar usuario
             const datos= {email: this.register_email, password: this.register_pass, name: this.register_username};
             this.$store.dispatch('register', datos);
@@ -153,5 +154,9 @@ input {
     max-height:2em;
     text-align: center;
     color:white;
+}
+
+#register_pic{
+    font-size:12px;
 }
 </style>

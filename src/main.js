@@ -8,15 +8,19 @@ import VueFirestore from 'vue-firestore';
 import router from "@/router"
 import App from './App.vue'
 
+
 Vue.use(Vuex);
 Vue.use(VueFirestore, {key: 'id'});
 
 Vue.config.productionTip = false
 
+firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
+
 const store = new Vuex.Store ({
   state: {
     user: null,
-    error: null
+    error: null,
+    image: null
   },
   mutations: {
     //mutación para cambiar estado user
@@ -28,6 +32,11 @@ const store = new Vuex.Store ({
     set_error(state, new_error){
       state.error = new_error;
     },
+
+    set_image(state, new_image){
+      state.image = new_image;
+    }
+  
   },
   actions: {    
     login(context, datos){
@@ -73,11 +82,10 @@ const store = new Vuex.Store ({
         router.push('/login');
       })
     }
-  }
-
+  },
 })
 
-new Vue({
+new Vue ({
   render: h => h(App),
   store,
   router

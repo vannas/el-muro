@@ -22,6 +22,10 @@ let router= new VueRouter ({
             component: LoginRegistro
         },
         {
+            path:'/wallpost/:postid',
+            component: Home
+        },
+        {
             path: '*',
             component: E404
         }
@@ -30,10 +34,7 @@ let router= new VueRouter ({
 
 router.beforeEach((to, from, next) => {
     let currentUser = firebase.auth().currentUser;
-    //let requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-    console.log(to);
-    console.log('Usuario actual', currentUser);
-    
+    //let requiresAuth = to.matched.some(record => record.meta.requiresAuth);    
     //if (requiresAuth && !currentUser) next('/')
     if (to.meta.requiresAuth && currentUser == null){
         next('/login')

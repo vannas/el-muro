@@ -5,7 +5,7 @@
         <ul id="nav-mobile" class="left hide-on-med-and-down">
           <li v-if="$route.path != '/login'"><router-link to="/"><i class="large material-icons">house</i></router-link></li>
           <li><router-link to="/login"><i class="large material-icons">account_circle</i></router-link></li>
-          <li><router-link to="/login" @click="logout"><i class="large material-icons out">pest_control_rodent</i>Exit</router-link></li> 
+          <li v-if="user"><router-link to="/login" @click="logout"><i class="large material-icons out">pest_control_rodent</i>Logout</router-link></li> 
         </ul>
       </div>
     </nav>
@@ -37,7 +37,8 @@ export default {
 
 <style>
 #app, html {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -50,8 +51,10 @@ export default {
   background: linear-gradient(to center, #FFEDBC, #ED4264); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
-#nav li .out{
+
+nav li .out{
   display: inline-block;
   margin-right:0.5em;
 }
+
 </style>
